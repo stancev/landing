@@ -3,6 +3,8 @@ import Image from 'next/image'
 import { getPayload } from 'payload'
 import React from 'react'
 import { fileURLToPath } from 'url'
+import { Button } from '@/components/ui/button'
+import HeroSection from '@/components/hero-section'
 
 import config from '@/payload.config'
 import './styles.css'
@@ -16,9 +18,10 @@ export default async function HomePage() {
   const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
 
   return (
-    <div className="home">
+    <div className="home dark">
       <div className="content">
-        <picture>
+        <HeroSection />
+        {/* <picture>
           <source srcSet="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg" />
           <Image
             alt="Payload Logo"
@@ -27,16 +30,20 @@ export default async function HomePage() {
             width={65}
           />
         </picture>
-        {!user && <h1>Welcome to your new project.</h1>}
+        {!user && (
+          <h1 className="text-3xl font-bold underline text-blue-800">
+            Welcome to your new project.
+          </h1>
+        )}
         {user && <h1>Welcome back, {user.email}</h1>}
-        <div className="links">
+        <div className="links space-x-1">
           <a
             className="admin"
             href={payloadConfig.routes.admin}
             rel="noopener noreferrer"
             target="_blank"
           >
-            Go to admin panel
+            <Button>Go to admin panel</Button>
           </a>
           <a
             className="docs"
@@ -44,16 +51,16 @@ export default async function HomePage() {
             rel="noopener noreferrer"
             target="_blank"
           >
-            Documentation
+            <Button variant="secondary">Documentation</Button>
           </a>
-        </div>
+        </div> */}
       </div>
-      <div className="footer">
+      {/* <div className="footer">
         <p>Update this page by editing</p>
         <a className="codeLink" href={fileURL}>
           <code>app/(frontend)/page.tsx</code>
         </a>
-      </div>
+      </div> */}
     </div>
   )
 }
